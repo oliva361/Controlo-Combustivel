@@ -5,41 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controlo de Combustível</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
             padding-bottom: 80px;
         }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
+        .container { max-width: 500px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 30px; }
         .card {
             background: white;
             border-radius: 20px;
@@ -47,210 +22,7 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        .car-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .car-btn {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .car-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-wrapper input {
-            width: 100%;
-            padding: 14px 50px 14px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .input-wrapper input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .input-wrapper .unit {
-            position: absolute;
-            right: 16px;
-            color: #999;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: #f5f5f5;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        .result {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .result .label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .result .value {
-            font-size: 32px;
-            font-weight: bold;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
-        .history-item {
-            border-bottom: 1px solid #f0f0f0;
-            padding: 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .history-item:last-child {
-            border-bottom: none;
-        }
-
-        .history-info {
-            flex: 1;
-        }
-
-        .history-date {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 4px;
-        }
-
-        .history-car {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-        }
-
-        .history-details {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .history-value {
-            font-size: 18px;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .delete-btn {
-            background: #ff4444;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 12px;
-            margin-left: 10px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-        }
-
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-            opacity: 0.5;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .car-manage {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
+        .car-manage { margin-bottom: 15px; }
         .add-car-btn {
             padding: 10px 16px;
             background: #4CAF50;
@@ -260,221 +32,143 @@
             cursor: pointer;
             font-size: 13px;
             font-weight: 600;
-            white-space: nowrap;
         }
-
-        .car-btn-wrapper {
-            position: relative;
-            flex: 1;
-        }
-
-        .remove-car {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: #ff4444;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .car-btn-wrapper:hover .remove-car {
-            display: flex;
-        }
-
-        .edit-car {
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .car-btn-wrapper:hover .edit-car {
-            display: flex;
-        }
-
-        .export-section {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid #f0f0f0;
-        }
-
-        .btn-secondary {
-            background: #f5f5f5;
-            color: #333;
-            margin-top: 10px;
-        }
-
-        .btn-danger {
-            background: #ff4444;
-            color: white;
-            margin-top: 10px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
+        .car-selector { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .car-btn-wrapper { position: relative; }
+        .car-btn {
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 400px;
-            width: 90%;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-
-        .modal-content h3 {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .modal-buttons {
+        .car-btn.active { background: #667eea; color: white; border-color: #667eea; }
+        .edit-car, .remove-car {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 10px;
+            cursor: pointer;
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            top: -8px;
         }
+        .edit-car { background: #4CAF50; left: -5px; }
+        .remove-car { background: #ff4444; right: -5px; }
 
-        .modal-buttons button {
-            flex: 1;
-        }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .input-wrapper input { width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 16px; }
+        .unit { position: absolute; right: 16px; color: #999; }
+        
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 10px; border: none; background: #f5f5f5; border-radius: 10px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #667eea; color: white; }
+        
+        .result { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; text-align: center; margin: 20px 0; }
+        .btn { width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; margin-bottom: 10px; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-danger { background: #ff4444; color: white; }
+        .btn-secondary { background: #eee; }
+
+        .history-item { border-bottom: 1px solid #f0f0f0; padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .history-value { font-weight: bold; color: #667eea; }
+        .delete-btn { background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+
+        /* Modal */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 20px; padding: 30px; width: 90%; max-width: 400px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>⛽ Controlo de Combustível</h1>
-            <p>Gerencie seus abastecimentos</p>
         </div>
 
         <div class="card">
             <div class="car-manage">
                 <button class="add-car-btn" id="add-car-btn">+ Adicionar Carro</button>
             </div>
-            <div class="car-selector" id="car-selector">
-                <!-- Carros serão adicionados dinamicamente -->
-            </div>
+            <div class="car-selector" id="car-selector"></div>
 
             <div class="tabs">
                 <button class="tab-btn active" data-tab="money">€ → Litros</button>
                 <button class="tab-btn" data-tab="liters">Litros → €</button>
             </div>
 
-            <!-- Tab: Dinheiro para Litros -->
             <div class="tab-content active" id="money-tab">
                 <div class="input-group">
                     <label>Preço por Litro</label>
                     <div class="input-wrapper">
-                        <input type="number" id="price-money" step="0.001" placeholder="1.650" value="1.650">
+                        <input type="number" id="price-money" step="0.001" value="1.650">
                         <span class="unit">€/L</span>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <label>Quanto quer gastar?</label>
                     <div class="input-wrapper">
-                        <input type="number" id="money-input" step="0.01" placeholder="50.00">
+                        <input type="number" id="money-input" placeholder="50.00">
                         <span class="unit">€</span>
                     </div>
                 </div>
-
                 <div class="result" id="liters-result" style="display: none;">
-                    <div class="label">Vai abastecer</div>
-                    <div class="value"><span id="liters-value">0</span> L</div>
+                    <div>Vai abastecer</div>
+                    <div style="font-size: 24px; font-weight: bold;"><span id="liters-value">0</span> L</div>
                 </div>
-
                 <button class="btn btn-primary" id="save-money-btn">Gravar Abastecimento</button>
             </div>
 
-            <!-- Tab: Litros para Dinheiro -->
             <div class="tab-content" id="liters-tab">
                 <div class="input-group">
                     <label>Preço por Litro</label>
                     <div class="input-wrapper">
-                        <input type="number" id="price-liters" step="0.001" placeholder="1.650" value="1.650">
+                        <input type="number" id="price-liters" step="0.001" value="1.650">
                         <span class="unit">€/L</span>
                     </div>
                 </div>
-
                 <div class="input-group">
-                    <label>Quantos litros quer abastecer?</label>
+                    <label>Quantos litros?</label>
                     <div class="input-wrapper">
-                        <input type="number" id="liters-input" step="0.01" placeholder="30.00">
+                        <input type="number" id="liters-input" placeholder="30.00">
                         <span class="unit">L</span>
                     </div>
                 </div>
-
                 <div class="result" id="money-result" style="display: none;">
-                    <div class="label">Vai custar</div>
-                    <div class="value"><span id="money-value">0</span> €</div>
+                    <div>Vai custar</div>
+                    <div style="font-size: 24px; font-weight: bold;"><span id="money-value">0</span> €</div>
                 </div>
-
                 <button class="btn btn-primary" id="save-liters-btn">Gravar Abastecimento</button>
             </div>
         </div>
 
-        <!-- Histórico -->
         <div class="card">
-            <h2 style="margin-bottom: 20px; font-size: 20px;">📊 Histórico de Abastecimentos</h2>
-            <div id="history-container">
-                <div class="empty-state">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 11l3 3L22 4"/>
-                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-                    </svg>
-                    <p>Nenhum abastecimento registado ainda</p>
-                </div>
-            </div>
-
-            <div class="export-section">
-                <button class="btn btn-primary" id="export-pdf-btn">📄 Exportar para PDF</button>
-                <button class="btn btn-danger" id="clear-history-btn">🗑️ Limpar Todo o Histórico</button>
+            <h2 style="margin-bottom: 15px;">📊 Histórico</h2>
+            <div id="history-container"></div>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" id="export-pdf-btn">📄 Exportar PDF</button>
+                <button class="btn btn-danger" id="clear-history-btn">🗑️ Limpar Tudo</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal para nome do carro -->
     <div class="modal" id="car-name-modal">
         <div class="modal-content">
-            <h3>Nome do Carro</h3>
-            <div class="input-group">
-                <label>Escolha um nome para identificar o carro:</label>
-                <div class="input-wrapper">
-                    <input type="text" id="car-name-input" placeholder="Ex: BMW, Clio, etc." maxlength="20">
-                </div>
+            <h3 id="modal-title">Nome do Carro</h3>
+            <div class="input-group" style="margin-top: 15px;">
+                <input type="text" id="car-name-input" style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd;">
             </div>
-            <div class="modal-buttons">
+            <div style="display: flex; gap: 10px;">
                 <button class="btn btn-secondary" id="cancel-car-btn">Cancelar</button>
                 <button class="btn btn-primary" id="confirm-car-btn">Confirmar</button>
             </div>
@@ -482,163 +176,87 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        // Estado da aplicação
         let currentCar = 1;
-        let currentTab = 'money';
         let history = [];
         let cars = [];
-        let editingCarId = null; // Para controlar se estamos editando ou adicionando
+        let editingCarId = null;
 
-        // Carregar dados do localStorage
         function loadData() {
             const savedHistory = localStorage.getItem('fuelHistory');
             const savedCars = localStorage.getItem('fuelCars');
-            
-            if (savedHistory) {
-                history = JSON.parse(savedHistory);
-            }
-            
-            if (savedCars) {
-                cars = JSON.parse(savedCars);
-            } else {
-                // Carros padrão
-                cars = [
-                    { id: 1, name: 'Carro 1' },
-                    { id: 2, name: 'Carro 2' },
-                    { id: 3, name: 'Carro 3' }
-                ];
-                saveCars();
-            }
-            
+            history = savedHistory ? JSON.parse(savedHistory) : [];
+            cars = savedCars ? JSON.parse(savedCars) : [{ id: 1, name: 'Meu Carro' }];
+            currentCar = cars[0].id;
             renderCars();
             renderHistory();
         }
 
-        // Salvar carros no localStorage
-        function saveCars() {
-            localStorage.setItem('fuelCars', JSON.stringify(cars));
-        }
+        function saveCars() { localStorage.setItem('fuelCars', JSON.stringify(cars)); }
+        function saveHistory() { localStorage.setItem('fuelHistory', JSON.stringify(history)); }
 
-        // Salvar histórico no localStorage
-        function saveHistory() {
-            localStorage.setItem('fuelHistory', JSON.stringify(history));
-        }
-
-        // Renderizar botões de carros
         function renderCars() {
             const container = document.getElementById('car-selector');
-            container.innerHTML = cars.map((car, index) => `
+            container.innerHTML = cars.map(car => `
                 <div class="car-btn-wrapper">
-                    <button class="edit-car" onclick="editCar(${car.id})">✏️</button>
-                    <button class="car-btn ${car.id === currentCar ? 'active' : ''}" data-car="${car.id}">
+                    <button class="edit-car" onclick="openEditCar(${car.id})">✏️</button>
+                    <button class="car-btn ${car.id === currentCar ? 'active' : ''}" onclick="selectCar(${car.id})">
                         ${car.name}
                     </button>
                     ${cars.length > 1 ? `<button class="remove-car" onclick="removeCar(${car.id})">×</button>` : ''}
                 </div>
             `).join('');
-
-            // Adicionar eventos aos botões
-            document.querySelectorAll('.car-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.car-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentCar = parseInt(btn.dataset.car);
-                });
-            });
         }
 
-        // Adicionar carro
-        document.getElementById('add-car-btn').addEventListener('click', () => {
-            editingCarId = null;
-            document.getElementById('modal-title').textContent = 'Adicionar Carro';
-            document.getElementById('car-name-modal').classList.add('active');
-            document.getElementById('car-name-input').value = '';
-            document.getElementById('car-name-input').focus();
-        });
-
-        // Editar carro
-        window.editCar = function(carId) {
-            editingCarId = carId;
-            const car = cars.find(c => c.id === carId);
-            if (car) {
-                document.getElementById('modal-title').textContent = 'Editar Nome do Carro';
-                document.getElementById('car-name-input').value = car.name;
-                document.getElementById('car-name-modal').classList.add('active');
-                document.getElementById('car-name-input').focus();
-                document.getElementById('car-name-input').select();
-            }
+        window.selectCar = (id) => {
+            currentCar = id;
+            renderCars();
         };
 
-        // Confirmar adição/edição de carro
-        document.getElementById('confirm-car-btn').addEventListener('click', () => {
-            const name = document.getElementById('car-name-input').value.trim();
-            
-            if (name) {
-                if (editingCarId) {
-                    // Editar carro existente
-                    const car = cars.find(c => c.id === editingCarId);
-                    if (car) {
-                        car.name = name;
-                        saveCars();
-                        renderCars();
-                        renderHistory(); // Atualizar histórico com novo nome
-                    }
-                } else {
-                    // Adicionar novo carro
-                    const newId = Math.max(...cars.map(c => c.id), 0) + 1;
-                    cars.push({ id: newId, name: name });
-                    saveCars();
-                    renderCars();
-                }
-                document.getElementById('car-name-modal').classList.remove('active');
-                editingCarId = null;
-            } else {
-                alert('Por favor, insira um nome para o carro.');
-            }
-        });
+        // Modal Logic
+        const modal = document.getElementById('car-name-modal');
+        const carInput = document.getElementById('car-name-input');
 
-        // Cancelar adição/edição de carro
-        document.getElementById('cancel-car-btn').addEventListener('click', () => {
-            document.getElementById('car-name-modal').classList.remove('active');
+        document.getElementById('add-car-btn').onclick = () => {
             editingCarId = null;
-        });
+            document.getElementById('modal-title').innerText = "Adicionar Carro";
+            carInput.value = "";
+            modal.classList.add('active');
+        };
 
-        // Permitir Enter no modal
-        document.getElementById('car-name-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                document.getElementById('confirm-car-btn').click();
+        window.openEditCar = (id) => {
+            editingCarId = id;
+            const car = cars.find(c => c.id === id);
+            document.getElementById('modal-title').innerText = "Editar Nome";
+            carInput.value = car.name;
+            modal.classList.add('active');
+        };
+
+        document.getElementById('cancel-car-btn').onclick = () => modal.classList.remove('active');
+
+        document.getElementById('confirm-car-btn').onclick = () => {
+            const name = carInput.value.trim();
+            if (!name) return alert("Insere um nome!");
+
+            if (editingCarId) {
+                const car = cars.find(c => c.id === editingCarId);
+                car.name = name;
+            } else {
+                const newId = Date.now();
+                cars.push({ id: newId, name: name });
+                currentCar = newId;
             }
-        });
+            saveCars();
+            renderCars();
+            renderHistory();
+            modal.classList.remove('active');
+        };
 
-        // Remover carro
-        window.removeCar = function(carId) {
-            if (cars.length <= 1) {
-                alert('⚠️ Deve manter pelo menos um carro.');
-                return;
-            }
-
-            const car = cars.find(c => c.id === carId);
-            const hasRecords = history.some(r => r.car === carId);
-
-            let confirmMsg = `Tem certeza que deseja remover "${car.name}"?`;
-            if (hasRecords) {
-                confirmMsg += '\n\nAtenção: Existem abastecimentos registados para este carro que também serão removidos.';
-            }
-
-            if (confirm(confirmMsg)) {
-                // Remover carro
-                cars = cars.filter(c => c.id !== carId);
-                
-                // Remover registos associados
-                history = history.filter(r => r.car !== carId);
-                
-                // Se o carro atual foi removido, selecionar o primeiro
-                if (currentCar === carId) {
-                    currentCar = cars[0].id;
-                }
-                
+        window.removeCar = (id) => {
+            if (confirm("Apagar este carro e os seus registos?")) {
+                cars = cars.filter(c => c.id !== id);
+                history = history.filter(h => h.car !== id);
+                if (currentCar === id && cars.length > 0) currentCar = cars[0].id;
                 saveCars();
                 saveHistory();
                 renderCars();
@@ -646,348 +264,107 @@
             }
         };
 
-        // Tabs
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-                
-                currentTab = btn.dataset.tab;
-                document.getElementById(currentTab + '-tab').classList.add('active');
+        // Cálculos e Abastecimentos
+        function calculate() {
+            const pM = parseFloat(document.getElementById('price-money').value);
+            const mM = parseFloat(document.getElementById('money-input').value);
+            if (pM && mM) {
+                document.getElementById('liters-value').innerText = (mM / pM).toFixed(2);
+                document.getElementById('liters-result').style.display = 'block';
+            }
+
+            const pL = parseFloat(document.getElementById('price-liters').value);
+            const lL = parseFloat(document.getElementById('liters-input').value);
+            if (pL && lL) {
+                document.getElementById('money-value').innerText = (pL * lL).toFixed(2);
+                document.getElementById('money-result').style.display = 'block';
+            }
+        }
+
+        document.querySelectorAll('input').forEach(i => i.oninput = calculate);
+
+        document.getElementById('save-money-btn').onclick = () => {
+            const price = parseFloat(document.getElementById('price-money').value);
+            const money = parseFloat(document.getElementById('money-input').value);
+            if (!money) return;
+            
+            history.unshift({
+                id: Date.now(),
+                date: new Date().toISOString(),
+                car: currentCar,
+                money: money,
+                liters: money / price,
+                price: price
             });
-        });
+            saveHistory();
+            renderHistory();
+            document.getElementById('money-input').value = "";
+            alert("Gravado!");
+        };
 
-        // Cálculo: Dinheiro -> Litros
-        const moneyInput = document.getElementById('money-input');
-        const priceMoney = document.getElementById('price-money');
-        const litersResult = document.getElementById('liters-result');
-        const litersValue = document.getElementById('liters-value');
+        document.getElementById('save-liters-btn').onclick = () => {
+            const price = parseFloat(document.getElementById('price-liters').value);
+            const liters = parseFloat(document.getElementById('liters-input').value);
+            if (!liters) return;
+            
+            history.unshift({
+                id: Date.now(),
+                date: new Date().toISOString(),
+                car: currentCar,
+                money: liters * price,
+                liters: liters,
+                price: price
+            });
+            saveHistory();
+            renderHistory();
+            document.getElementById('liters-input').value = "";
+            alert("Gravado!");
+        };
 
-        function calculateLiters() {
-            const money = parseFloat(moneyInput.value);
-            const price = parseFloat(priceMoney.value);
-
-            if (money && price && price > 0) {
-                const liters = money / price;
-                litersValue.textContent = liters.toFixed(2);
-                litersResult.style.display = 'block';
-            } else {
-                litersResult.style.display = 'none';
-            }
-        }
-
-        moneyInput.addEventListener('input', calculateLiters);
-        priceMoney.addEventListener('input', calculateLiters);
-
-        // Cálculo: Litros -> Dinheiro
-        const litersInput = document.getElementById('liters-input');
-        const priceLiters = document.getElementById('price-liters');
-        const moneyResult = document.getElementById('money-result');
-        const moneyValue = document.getElementById('money-value');
-
-        function calculateMoney() {
-            const liters = parseFloat(litersInput.value);
-            const price = parseFloat(priceLiters.value);
-
-            if (liters && price && price > 0) {
-                const money = liters * price;
-                moneyValue.textContent = money.toFixed(2);
-                moneyResult.style.display = 'block';
-            } else {
-                moneyResult.style.display = 'none';
-            }
-        }
-
-        litersInput.addEventListener('input', calculateMoney);
-        priceLiters.addEventListener('input', calculateMoney);
-
-        // Gravar abastecimento - Dinheiro
-        document.getElementById('save-money-btn').addEventListener('click', () => {
-            const money = parseFloat(moneyInput.value);
-            const price = parseFloat(priceMoney.value);
-
-            if (money && price && price > 0) {
-                const liters = money / price;
-                
-                const record = {
-                    id: Date.now(),
-                    date: new Date().toISOString(),
-                    car: currentCar,
-                    type: 'money',
-                    money: money,
-                    liters: liters,
-                    price: price
-                };
-
-                history.unshift(record);
-                saveHistory();
-                renderHistory();
-
-                // Limpar campos
-                moneyInput.value = '';
-                litersResult.style.display = 'none';
-
-                alert('✅ Abastecimento registado com sucesso!');
-            } else {
-                alert('⚠️ Por favor, preencha todos os campos corretamente.');
-            }
-        });
-
-        // Gravar abastecimento - Litros
-        document.getElementById('save-liters-btn').addEventListener('click', () => {
-            const liters = parseFloat(litersInput.value);
-            const price = parseFloat(priceLiters.value);
-
-            if (liters && price && price > 0) {
-                const money = liters * price;
-                
-                const record = {
-                    id: Date.now(),
-                    date: new Date().toISOString(),
-                    car: currentCar,
-                    type: 'liters',
-                    money: money,
-                    liters: liters,
-                    price: price
-                };
-
-                history.unshift(record);
-                saveHistory();
-                renderHistory();
-
-                // Limpar campos
-                litersInput.value = '';
-                moneyResult.style.display = 'none';
-
-                alert('✅ Abastecimento registado com sucesso!');
-            } else {
-                alert('⚠️ Por favor, preencha todos os campos corretamente.');
-            }
-        });
-
-        // Renderizar histórico
         function renderHistory() {
             const container = document.getElementById('history-container');
-            
             if (history.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 11l3 3L22 4"/>
-                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-                        </svg>
-                        <p>Nenhum abastecimento registado ainda</p>
-                    </div>
-                `;
+                container.innerHTML = "<p style='text-align:center; color:#999;'>Sem registos.</p>";
                 return;
             }
-
-            container.innerHTML = history.map(record => {
-                const date = new Date(record.date);
-                const dateStr = date.toLocaleDateString('pt-PT', { 
-                    day: '2-digit', 
-                    month: '2-digit', 
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                const car = cars.find(c => c.id === record.car);
-                const carName = car ? car.name : `Carro ${record.car}`;
-
+            container.innerHTML = history.map(h => {
+                const car = cars.find(c => c.id === h.car) || { name: 'Desconhecido' };
                 return `
-                    <div class="history-item">
-                        <div class="history-info">
-                            <div class="history-date">${dateStr}</div>
-                            <div class="history-car">${carName}</div>
-                            <div class="history-details">
-                                ${record.liters.toFixed(2)} L × ${record.price.toFixed(3)} €/L
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center;">
-                            <div class="history-value">${record.money.toFixed(2)} €</div>
-                            <button class="delete-btn" onclick="deleteRecord(${record.id})">🗑️</button>
-                        </div>
+                <div class="history-item">
+                    <div>
+                        <div style="font-size:12px; color:#999;">${new Date(h.date).toLocaleDateString()}</div>
+                        <div style="font-weight:bold;">${car.name}</div>
+                        <div style="font-size:14px;">${h.liters.toFixed(2)}L @ ${h.price.toFixed(3)}€</div>
                     </div>
-                `;
+                    <div style="text-align:right;">
+                        <div class="history-value">${h.money.toFixed(2)} €</div>
+                        <button class="delete-btn" onclick="deleteEntry(${h.id})">🗑️</button>
+                    </div>
+                </div>`;
             }).join('');
         }
 
-        // Deletar registo individual
-        window.deleteRecord = function(id) {
-            if (confirm('Tem certeza que deseja apagar este registo?')) {
-                history = history.filter(record => record.id !== id);
+        window.deleteEntry = (id) => {
+            if (confirm("Apagar registo?")) {
+                history = history.filter(h => h.id !== id);
                 saveHistory();
                 renderHistory();
             }
         };
 
-        // Limpar todo o histórico
-        document.getElementById('clear-history-btn').addEventListener('click', () => {
-            if (history.length === 0) {
-                alert('⚠️ Não há histórico para apagar.');
-                return;
-            }
-
-            if (confirm('⚠️ ATENÇÃO! Tem certeza que deseja apagar TODO o histórico de abastecimentos?\n\nEsta ação não pode ser desfeita.')) {
-                history = [];
-                saveHistory();
-                renderHistory();
-                alert('✅ Histórico limpo com sucesso!');
-            }
+        // Tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.tab-btn, .tab-content').forEach(el => el.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab + '-tab').classList.add('active');
+            };
         });
 
-        // Exportar para PDF
-        document.getElementById('export-pdf-btn').addEventListener('click', async () => {
-            if (history.length === 0) {
-                alert('⚠️ Não há dados para exportar.');
-                return;
-            }
+        document.getElementById('clear-history-btn').onclick = () => {
+            if (confirm("Limpar tudo?")) { history = []; saveHistory(); renderHistory(); }
+        };
 
-            try {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-
-                // Título
-                doc.setFontSize(20);
-                doc.setFont(undefined, 'bold');
-                doc.text('Relatório de Abastecimentos', 105, 20, { align: 'center' });
-
-                // Data do relatório
-                doc.setFontSize(10);
-                doc.setFont(undefined, 'normal');
-                const reportDate = new Date().toLocaleDateString('pt-PT', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-                doc.text(`Gerado em: ${reportDate}`, 105, 28, { align: 'center' });
-
-                // Estatísticas gerais
-                const totalSpent = history.reduce((sum, r) => sum + r.money, 0);
-                const totalLiters = history.reduce((sum, r) => sum + r.liters, 0);
-                const avgPrice = totalSpent / totalLiters;
-
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'bold');
-                doc.text('Resumo Geral:', 20, 40);
-                
-                doc.setFont(undefined, 'normal');
-                doc.setFontSize(10);
-                doc.text(`Total gasto: ${totalSpent.toFixed(2)} €`, 20, 48);
-                doc.text(`Total abastecido: ${totalLiters.toFixed(2)} L`, 20, 54);
-                doc.text(`Preço médio: ${avgPrice.toFixed(3)} €/L`, 20, 60);
-                doc.text(`Número de abastecimentos: ${history.length}`, 20, 66);
-
-                // Estatísticas por carro
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'bold');
-                doc.text('Por Carro:', 20, 78);
-
-                let yPos = 86;
-                cars.forEach(car => {
-                    const carRecords = history.filter(r => r.car === car.id);
-                    if (carRecords.length > 0) {
-                        const carTotal = carRecords.reduce((sum, r) => sum + r.money, 0);
-                        const carLiters = carRecords.reduce((sum, r) => sum + r.liters, 0);
-                        
-                        doc.setFont(undefined, 'normal');
-                        doc.setFontSize(10);
-                        doc.text(`${car.name}: ${carTotal.toFixed(2)} € / ${carLiters.toFixed(2)} L (${carRecords.length} abastecimentos)`, 20, yPos);
-                        yPos += 6;
-                    }
-                });
-
-                // Tabela de abastecimentos
-                yPos += 8;
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'bold');
-                doc.text('Histórico Detalhado:', 20, yPos);
-
-                yPos += 8;
-                doc.setFontSize(9);
-                
-                // Cabeçalho da tabela
-                doc.setFont(undefined, 'bold');
-                doc.text('Data', 20, yPos);
-                doc.text('Carro', 55, yPos);
-                doc.text('Litros', 95, yPos);
-                doc.text('Preço/L', 125, yPos);
-                doc.text('Total', 160, yPos);
-                
-                yPos += 2;
-                doc.line(20, yPos, 190, yPos);
-                yPos += 6;
-
-                // Dados
-                doc.setFont(undefined, 'normal');
-                
-                for (const record of history) {
-                    // Verificar se precisa de nova página
-                    if (yPos > 270) {
-                        doc.addPage();
-                        yPos = 20;
-                        
-                        // Repetir cabeçalho
-                        doc.setFont(undefined, 'bold');
-                        doc.text('Data', 20, yPos);
-                        doc.text('Carro', 55, yPos);
-                        doc.text('Litros', 95, yPos);
-                        doc.text('Preço/L', 125, yPos);
-                        doc.text('Total', 160, yPos);
-                        yPos += 2;
-                        doc.line(20, yPos, 190, yPos);
-                        yPos += 6;
-                        doc.setFont(undefined, 'normal');
-                    }
-
-                    const date = new Date(record.date);
-                    const dateStr = date.toLocaleDateString('pt-PT', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric'
-                    });
-                    
-                    const car = cars.find(c => c.id === record.car);
-                    const carName = car ? car.name : `Carro ${record.car}`;
-
-                    doc.text(dateStr, 20, yPos);
-                    doc.text(carName, 55, yPos);
-                    doc.text(`${record.liters.toFixed(2)} L`, 95, yPos);
-                    doc.text(`${record.price.toFixed(3)} €`, 125, yPos);
-                    doc.text(`${record.money.toFixed(2)} €`, 160, yPos);
-                    
-                    yPos += 6;
-                }
-
-                // Linha de totais
-                yPos += 2;
-                doc.setLineWidth(0.5);
-                doc.line(20, yPos, 190, yPos);
-                yPos += 6;
-                
-                doc.setFont(undefined, 'bold');
-                doc.setFontSize(10);
-                doc.text('TOTAL GERAL:', 20, yPos);
-                doc.text(`${totalLiters.toFixed(2)} L`, 95, yPos);
-                doc.text(`${totalSpent.toFixed(2)} €`, 160, yPos);
-
-                // Salvar PDF
-                const fileName = `Abastecimentos_${new Date().toISOString().split('T')[0]}.pdf`;
-                doc.save(fileName);
-                
-                alert('✅ PDF exportado com sucesso!');
-            } catch (error) {
-                console.error('Erro ao gerar PDF:', error);
-                alert('❌ Erro ao gerar o PDF. Por favor, tente novamente.');
-            }
-        });
-
-        // Inicializar
         loadData();
     </script>
 </body>
